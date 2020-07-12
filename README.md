@@ -10,15 +10,9 @@ Following services will be used to complete this exercise.
 - WAF
 
 # Requirements
-create `terraform.tfvars` with following values:
-```
-project_key         = "terraform-s3website-distribution"
-aws_access_key      = "XXXXXXXXXX"
-aws_secret_key      = "XXXXXXXXXX"
-aws_region          = "us-east-1"
-```
+Provide `acm_certificate_arn` as an argument
 
-# Included features:
+# Include features:
 * Take the ARN of an ACM certificate as a parameter.
 * Create the necessary S3 bucket with best practices configuration.
 * Create route53 HostedZone.
@@ -27,6 +21,7 @@ aws_region          = "us-east-1"
 * IP protection implemented as desired.
 
 ## Getting Started:
+    cd infra-environment/dev
 	terraform init
 	terraform plan
 	terraform apply

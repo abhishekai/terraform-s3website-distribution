@@ -9,7 +9,7 @@ variable "aws_region" {
 }
 
 variable "domain" {
-  description = "The domain name Route53 zone is going to be created with"
+  description = "The domain name Route53 zone is going to be created with, and where we host our site. This must be the naked domain, e.g. `example.com`"
 }
 
 variable "product_domain" {
@@ -28,7 +28,6 @@ variable "aws_secret_key" {
 variable "environment" {
   description = "The environment name to tag to the resources"
 }
-
-#variable "acm_certificate_arn" {
-# description = "The ARN of the AWS Certificate Manager certificate that you wish to use with this distribution. The ACM certificate must be in US-EAST-1."
-#}
+variable "acm_certificate_arn" {
+ description = "The ARN of the AWS Certificate Manager certificate that you wish to use with this distribution. The ACM certificate must be in US-EAST-1."
+}

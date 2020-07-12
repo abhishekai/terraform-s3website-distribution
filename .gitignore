@@ -1,5 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
-.idea
+.idea/*
 infra-environment/dev/.terraform
 infra-environment/dev/terraform.tfstate
 infra-environment/dev/.terraform/
+infra-environment/dev/terraform.tfvars
