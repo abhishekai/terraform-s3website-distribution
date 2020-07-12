@@ -4,18 +4,18 @@ locals {
   www_domain = "www.${var.domain_name}"
 
   domains = [
-    "${var.domain_name}",
-    "${local.www_domain}"
+    "${var.domain_name}", # dataoncloud.tk
+    "${local.www_domain}" # www.dataoncloud.tk
   ]
 
   s3_bucket_domain_names =[
-    "${var.s3_bucket_main_domain_name}",
-    "${var.s3_bucket_redirect_domain_name}"
+    "${var.s3_bucket_redirect_domain_name}",
+    "${var.s3_bucket_main_domain_name}"
   ]
 
   s3_bucket_names =[
-    "${var.s3_bucket_main_name}",
-    "${var.s3_bucket_redirect_domain_name}"
+    "${var.s3_bucket_redirect_name}", # dataoncloud.tk --redirect bucket
+    "${var.s3_bucket_main_name}", # www.dataoncloud.tk --main bucket
   ]
   #Incase you need custom origin of cloufront for s3
  /* website_endpoints = [
