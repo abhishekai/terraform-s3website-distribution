@@ -11,6 +11,8 @@ Following services will be used to complete this exercise.
 
 # Requirements
 Provide `acm_certificate_arn` as an argument
+Have index.html and 400.html file uploaded into main bucket based on your domain name. e.g. if your domain name is xyz.com then upload
+files under www.xyz.com. However, this terraform module will create two s3 buckets called xyz.com and www.xyz.com and enable appropriate static website hosting settings.
 
 # Include features:
 * Take the ARN of an ACM certificate as a parameter.
