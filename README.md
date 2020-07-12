@@ -9,6 +9,10 @@ Following services will be used to complete this exercise.
 - CloudFront
 - WAF
 
+## Architecture
+
+![architecture](architecture.png)
+
 # Requirements
 * Provide `acm_certificate_arn` as an argument
 * Have index.html and 400.html file uploaded into main bucket based on your domain name. e.g. if your domain name is xyz.com then upload
