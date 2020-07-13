@@ -31,3 +31,8 @@ variable "environment" {
 variable "acm_certificate_arn" {
  description = "The ARN of the AWS Certificate Manager certificate that you wish to use with this distribution. The ACM certificate must be in US-EAST-1."
 }
+
+/*
+variable "whitelisted_ips" {
+  type = list
+}*/

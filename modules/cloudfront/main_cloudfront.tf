@@ -2,6 +2,7 @@
 ## Name - Module cloudfront
 locals {
   www_domain = "www.${var.domain_name}"
+  waf_web_acl_id =  var.waf_web_acl_id
 
   domains = [
     "${var.domain_name}", # dataoncloud.tk
@@ -35,15 +36,15 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
   default_root_object = "${element(local.domains, count.index) == local.www_domain ? "index.html" : ""}"
   aliases             = ["${element(local.domains, count.index)}"] #Route53 requires Alias/CNAME to be setup
   is_ipv6_enabled     = true
-  price_class = "PriceClass_100"  # The cheapest priceclass
-
+  price_class         = "PriceClass_100"  # The cheapest priceclass
+  web_acl_id          = local.waf_web_acl_id
   origin {
     domain_name = "${element(local.s3_bucket_domain_names, count.index)}"
     origin_id   = "${element(local.s3_bucket_names, count.index)}"
 
     #Restrict to s3 signed url only
     s3_origin_config {
-      origin_access_identity = "${aws_cloudfront_origin_access_identity.origin_access_identity.cloudfront_access_identity_path}"
+      origin_access_identity = aws_cloudfront_origin_access_identity.origin_access_identity.cloudfront_access_identity_path
     }
 
     #Enable CustomOrigin incase you want to create S3oi

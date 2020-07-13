@@ -20,7 +20,7 @@ variable "s3_bucket_main_domain_name" {}
 
 variable "s3_bucket_redirect_domain_name" {}
 
-
+variable "waf_web_acl_id" {}
 /*
 variable "bucket_main_website_endpoint" {
   description = "endpoint of s3 main bucket"

@@ -36,5 +36,14 @@ module "cloudfront_distribution" {
   s3_bucket_redirect_name = "${module.s3_buckets.redirect_bucket_name}"
   s3_bucket_main_domain_name = "${module.s3_buckets.main_bucket_domain_name}"
   s3_bucket_redirect_domain_name = "${module.s3_buckets.redirect_bucket_domain_name}"
+  waf_web_acl_id                = "${module.waf_ip_range_acl.waf_web_acl_id}"
 }
 
+module "waf_ip_range_acl"{
+  source              = "../../modules/waf"
+  project_name        = var.project_name
+  environment_name    = var.environment
+  cf_waf_rule_name    = "MyIpRange"
+  cf_waf_acl_name     = "SecureCDN"
+  ip_type             = "IPV4"
+}
