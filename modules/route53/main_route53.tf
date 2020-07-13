@@ -9,9 +9,8 @@ locals {
     "${local.www_domain}"
   ]
 }
-# Note: Creating this route53 zone is not enough. The domain's name servers need to point to the NS
-# servers of the route53 zone. Otherwise the DNS lookup will fail.
-/*resource "aws_route53_zone" "main" {
+# Note: Creating this route53 zone is not enough. The domain's name servers need to point to the NS servers of the route53 zone. Otherwise the DNS lookup will fail.
+resource "aws_route53_zone" "main" {
   name              = var.domain_name
   comment           = local.description
 
@@ -21,15 +20,15 @@ locals {
     "Environment"   = var.environment
     "Description"   = local.description
   }
-}*/
-
-data "aws_route53_zone" "main" {
-  name = var.domain_name
 }
+
+/*data "aws_route53_zone" "main" {
+  name = var.domain_name
+}*/
 
 resource "aws_route53_record" "A" {
   count   = "${length(local.domains)}"
-  zone_id =  data.aws_route53_zone.main.zone_id
+  zone_id =  aws_route53_zone.main.zone_id
   name    = "${element(local.domains, count.index)}"
   type    = "A"
 
@@ -42,7 +41,7 @@ resource "aws_route53_record" "A" {
 
 resource "aws_route53_record" "AAAA" {
   count   = "${length(local.domains)}"
-  zone_id =  data.aws_route53_zone.main.zone_id
+  zone_id =  aws_route53_zone.main.zone_id
   name    = "${element(local.domains, count.index)}"
   type    = "AAAA"
 
